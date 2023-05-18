@@ -1,0 +1,31 @@
+Use command start-pg.sh to start database, ctrl-c to stop it.
+
+If you are running this with computer which is in private use (ie. not a lab 
+computer), you could also start and stop database in the background using 
+pg_ctl utility, refer to documentation for details.
+
+When it is running, you can connect to database in different terminal with 
+command:
+    psql
+
+When you need to connect to database from code, use socket in 
+/home/hakkajoe/pgsql/sock 
+with default database name and no need to give username or password. Please 
+do not hardcode this into your code, this connection will only work for you.
+
+
+admin password: 8a76bb7fd0e0223e3f388d87ae24bd84
+
+Tables:
+users: id, name, pw, is_admin
+
+restaurants: id, name, description
+reviews: id, stars, textreview, date, restaurant(tied to restaurants)
+classes: id, name
+restaurant_classes: CREATE TABLE restaurant_classifications (
+  restaurant_id INTEGER NOT NULL,
+  classification_id INTEGER NOT NULL,
+  PRIMARY KEY (restaurant_id, classification_id),
+  FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
+  FOREIGN KEY (classification_id) REFERENCES classifications(id)
+);
