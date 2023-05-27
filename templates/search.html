@@ -1,0 +1,18 @@
+<!--template for search result page-->
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+<div class="content">
+Search Results:
+<hr>
+{% for restaurant in matches %}
+<p><h2>{{restaurant.name}}</h2></p>
+<p>{{restaurant.description}}</p>
+<p><a href="/reviewspage/{{restaurant.id}}">Read reviews</a></p>
+<hr>
+{% endfor %}
+<p><a href="/">Return to main page</a></p>
+</div>
+</body>

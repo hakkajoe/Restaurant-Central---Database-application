@@ -1,0 +1,30 @@
+<!--template for restaurant creation page-->
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+<div class="content">    
+{% if session.username == "admin" %}
+<form action="/createrestaurant" method="POST">
+<p>Restaurant name:<br>
+<input type="text" name="name"></p>
+<p>Description:<br>
+<textarea name="description" rows="10" cols="80"></textarea></p>
+<p>Tags:<br>
+{% for class in classes %}
+<input type="checkbox" name="tag" value="{{ class.id }}"> {{ class.name }} <br>
+{% endfor %}
+<br>
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+<p><input type="submit" value="Add restaurant"><br>
+</p>
+<p><a href="/">Return to frontpage</a></p>
+</form>
+{% else %}
+Restricted access<br>
+<br>
+<a href="/">Return to main page</a> 
+{% endif %}
+</div>
+</body>

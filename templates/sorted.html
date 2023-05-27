@@ -1,0 +1,78 @@
+<!--template for main page where restaurants are sorted by rating-->
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+<div class="content">
+<p><h1>Restaurant Central</h1></p>
+{% if session.username %}
+<p>You are signed in as {{ session.username }}</p>
+<a href="/logout">Sign out</a>
+{% if session.username == "admin" %}
+ | <a href="/newrestaurant">Add restaurant</a>
+ | <a href="/tagedit">Edit tags</a>
+{% endif %}
+<br><br><br>
+<form action="/search" method="GET">
+    Search restaurants by keyword: <input type="text" name="query">
+    <input type="submit" value="Search">
+    </form>
+<a href="/">Sort restaurants by name</a>
+<hr>
+{% for review in reviewslist %}
+{% for restaurant in restaurants %}
+{% if review[0] == restaurant.id %}
+<h2>{{ restaurant.name }}</h2>
+{% for list in reviewslist %}
+{% if list[0] == restaurant.id %}
+{% if list[2] != 0 %}
+ | Rated {{(list[1]/list[2])|round(1)}} out of 5, based on {{list[2]}} reviews
+{% else %}
+ | No reviews
+{% endif %}
+{% endif %}
+{% endfor %}
+<br>
+<br>
+{{ restaurant.description }} <br>
+<br>
+Tags: 
+<br>
+{% for restaurant_class in restaurant_classes %}
+{% if restaurant_class.restaurant_id == restaurant.id %}
+{% for class in classes %}
+{% if class.id == restaurant_class.class_id %}
+{{ class.name }} <br>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+<br>
+<a href="/newreview/{{ restaurant.id }}">Write a review</a> |
+<a href="/reviewspage/{{ restaurant.id }}">Show reviews</a>
+{% if session.username == "admin" %}
+ | <a href="/editrestaurant/{{ restaurant.id }}">Edit restaurant details</a>
+ | <a href="/deleterestaurant/{{ restaurant.id }}">Delete restaurant</a>
+{% endif %}
+{% endif %}
+{% endfor %}
+<br>
+<hr>
+{% endfor %}
+{% else %}
+<form action="/login" method="POST">
+<p>Username:<br>
+<input type="text" name="username"></p>
+<p>Password:<br>
+<input type="password" name="password"></p>
+{% if error %}
+    <p class="error-msg">{{ error }}</p>
+{% endif %}
+<input type="submit" value="Sign in"><br>
+<br>
+<a href="/createuser">Create User</a><br>
+</form>
+{% endif %}
+</div>
+</body>

@@ -1,0 +1,54 @@
+<!--template for review creation page-->
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+<div class="content">
+<h2>{{ restaurant }}</h2>
+<form action="/review" method="POST">
+<p>Stars:<br>
+{% if stars == '1' %}
+1: <input type="radio" name="stars" value="1" checked> <br>
+{% else %}
+1: <input type="radio" name="stars" value="1"> <br>
+{% endif %}
+{% if stars == '2' %}
+2: <input type="radio" name="stars" value="2" checked> <br>
+{% else %}
+2: <input type="radio" name="stars" value="2"> <br>
+{% endif %}
+{% if stars == '3' %}
+3: <input type="radio" name="stars" value="3" checked> <br>
+{% else %}
+3: <input type="radio" name="stars" value="3" checked><br>
+{% endif %}
+{% if stars == '4' %}
+4: <input type="radio" name="stars" value="4" checked> <br>
+{% else %}
+4: <input type="radio" name="stars" value="4"> <br>
+{% endif %}
+{% if stars == '5' %}
+5: <input type="radio" name="stars" value="5" checked> <br>
+{% else %}
+5: <input type="radio" name="stars" value="5"> <br>
+{% endif %}
+</p>
+<p>Review (max 500 characters):<br>
+{% if textreview %}
+<textarea name="textreview" rows="10" cols="80">{{textreview}}</textarea></p>
+<p class="error-msg">{{ error }}</p>
+{% else %}
+<textarea name="textreview" rows="10" cols="80"></textarea></p>
+{% endif %}
+<br>
+<input type="hidden" name="id" value="{{ id }}">
+<input type="hidden" name="restaurant" value="{{ restaurant }}">
+<input type="hidden" name="reviewer" value="{{ session.username }}">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+<p><input type="submit" value="Publish"><br>
+</p>
+<p><a href="/">Return to frontpage</a></p>
+</form>
+</div>
+</body>

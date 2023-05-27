@@ -1,0 +1,64 @@
+<!--template for review page of a restaurant-->
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+<div class="content">
+<p><a href="/">Return to main page</a></p>
+<hr>
+<p><h2>{{restaurant.name}}</h2></p>
+<p>{{restaurant.description}}</p>
+<hr>
+{% if reviews %}
+{% for review in reviews %}
+Review by {{ review.reviewer }}, {{ review.date.strftime("%d.%m.%Y at %H:%M:%S") }}<br>
+<br>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    .checked {
+      color: rgb(255, 208, 0);
+    }
+    </style>
+    {% if review.stars > 0 %}
+    <span class="fa fa-star checked"></span>
+    {% else %}
+    <span class="fa fa-star"></span>
+    {% endif %}
+    {% if review.stars > 1 %}
+    <span class="fa fa-star checked"></span>
+    {% else %}
+    <span class="fa fa-star"></span>
+    {% endif %}
+    {% if review.stars > 2 %}
+    <span class="fa fa-star checked"></span>
+    {% else %}
+    <span class="fa fa-star"></span>
+    {% endif %}
+    {% if review.stars > 3 %}
+    <span class="fa fa-star checked"></span>
+    {% else %}
+    <span class="fa fa-star"></span>
+    {% endif %}
+    {% if review.stars > 4 %}
+    <span class="fa fa-star checked"></span>
+    {% else %}
+    <span class="fa fa-star"></span>
+    {% endif %}
+<br>
+<p>{{ review.textreview }}</p>
+<br>
+{% if session.username == "admin" or session.username == "{{ review.reviewer }}"%}
+<a href="/deletereview/{{ review.id }}">Delete review</a>
+{% endif %}
+<br>
+<hr>
+{% endfor %}
+{% else %}
+<br>No reviews yet!<br>
+<hr>
+{% endif %}
+<p><a href="/newreview/{{ restaurant.id }}">Write a review</a></p>
+<p><a href="/">Return to main page</a></p>
+</div>
+</body>

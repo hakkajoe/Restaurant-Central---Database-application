@@ -1,0 +1,22 @@
+<!--template for user creation page-->
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+<div class="content">
+<p><h1>Restaurant Central</h1></p>
+<form action="/createuser" method="POST">
+<p>Username (3-16 characters):<br>
+<input type="text" name="username"></p>
+<p>Password (8-25 characters):<br>
+<input type="password" name="password"></p>
+{% if error %}
+    <p class="error-msg">{{ error }}</p>
+{% endif %}
+<input type="submit" value="Create"><br>
+<br>
+<a href="/">Return to login</a> 
+</form>
+</div>
+</body>

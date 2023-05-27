@@ -1,0 +1,4 @@
+export LD_LIBRARY_PATH=/home/hakkajoe/pgsql/lib
+export PATH=/home/hakkajoe/pgsql/bin:$PATH
+export PGHOST=/home/hakkajoe/pgsql/sock
+export PGDATA=/home/hakkajoe/pgsql/data
