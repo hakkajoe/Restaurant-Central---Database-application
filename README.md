@@ -5,30 +5,30 @@
 1. Clone the application to your device
 
 
-'''bash
+```bash
 git clone https://github.com/hakkajoe/Restaurant-Central---Database-application
-'''
+```
 
 2. Create virtual environment in the cloned folder and activate it
 
-'''bash
+```bash
 python3 -m venv venv
-'''
-'''bash
+```
+```bash
 source venv/bin/activate
-'''
+```
 
 3. Install Flask
 
-'''bash
+```bash
 pip install flask
-'''
+```
 
 4. Install dependent libraries
 
-'''bash
+```bash
 pip install -r requirements.txt
-'''
+```
 
 (5). If not yoet installed, install PostgreSQL on your device
 
