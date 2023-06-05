@@ -25,9 +25,8 @@ psql -d <database name that you chose> < schema.sql
 3. Create .env file to the cloned folder with the following content:
 
 
-DATABASE_URL=postgresql:///<name of the database that you chose in phase 2>
-
-SECRET_KEY=<secret key of your choosing>
+DATABASE_URL=postgresql:///(name of the database that you chose in phase 2)
+SECRET_KEY=(secret key of your choosing)
 
 
 4. Create virtual environment in the cloned folder and activate it
