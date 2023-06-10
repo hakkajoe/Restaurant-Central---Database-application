@@ -1,9 +1,0 @@
-Name: libpq
-Description: PostgreSQL libpq library
-Url: http://www.postgresql.org/
-Version: 12.5
-Requires: 
-Requires.private: 
-Cflags: -I/home/hakkajoe/pgsql/include
-Libs: -L/home/hakkajoe/pgsql/lib -lpq
-Libs.private:  -lssl -lcrypto -lcrypt -lm
