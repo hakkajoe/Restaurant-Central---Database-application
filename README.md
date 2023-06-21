@@ -25,7 +25,7 @@ psql -d <database name that you chose> < schema.sql
 3. Create .env file to the cloned folder with the following content:
 
 
-DATABASE_URL=postgresql:///(name of the database that you chose in phase 2)
+DATABASE_URL=postgresql+psycopg2:///(name of the database that you chose in phase 2)
 
 SECRET_KEY=673fc60f3baad8be289403dc24da09dc
 
