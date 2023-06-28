@@ -8,8 +8,14 @@ def restaurants_for_index():
     return restaurants
 
 def search(query):
-    sql = text("SELECT id, name, description FROM restaurants WHERE name LIKE :query OR description LIKE :query")
-    result = db.session.execute(sql, {"query":"%"+query+"%"})
+    sql = text("""
+        SELECT r.id, r.name, r.description, c.name AS class_name
+        FROM restaurants r
+        LEFT JOIN restaurant_classes rc ON r.id = rc.restaurant_id
+        LEFT JOIN classes c ON rc.class_id = c.id
+        WHERE r.name LIKE :query OR r.description LIKE :query OR c.name LIKE :query
+    """)
+    result = db.session.execute(sql, {"query": "%" + query + "%"})
     matches = result.fetchall()
     return matches
 

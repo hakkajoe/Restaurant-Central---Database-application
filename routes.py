@@ -101,6 +101,7 @@ def createuser():
             return render_template("createuser.html", error="Username already exists")
         users.create(username, password)
         session["username"] = username
+        session["csrf_token"] = secrets.token_hex(16)
         return redirect("/")
     else:
         return render_template("createuser.html")

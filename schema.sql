@@ -45,5 +45,5 @@ INSERT INTO restaurant_classes (restaurant_id, class_id) VALUES (1,2);
 INSERT INTO restaurant_classes (restaurant_id, class_id) VALUES (1,3);
 INSERT INTO restaurant_classes (restaurant_id, class_id) VALUES (3,1);
 
-INSERT INTO reviews (reviewer, stars, textreview, date, restaurant_id) VALUES ('Antti Anon', 4, 'Loved the place, but could have had more spices', 202
-3-05-27 13:39:22.458804, 2);
+INSERT INTO reviews (reviewer, stars, textreview, date, restaurant_id) VALUES ('Antti Anon', 4, 'Loved the place, but could have had more spices', '202
+3-05-27 13:39:22.458804', 2);

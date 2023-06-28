@@ -27,7 +27,7 @@ psql -d <database name that you chose> < schema.sql
 
 DATABASE_URL=postgresql+psycopg2:///(name of the database that you chose in phase 2)
 
-SECRET_KEY=673fc60f3baad8be289403dc24da09dc
+SECRET_KEY= (secret kry of your choosing)
 
 
 4. Create virtual environment in the cloned folder and activate it
@@ -39,16 +39,14 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-5. Install Flask
-
-```bash
-pip install flask
-```
-
-6. Install dependent libraries
+5. Install dependent libraries
 
 ```bash
 pip install -r requirements.txt
+```
+
+6. Initiate application with command ```bash
+flask run
 ```
 
 ## How the application works
