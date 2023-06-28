@@ -45,7 +45,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-6. Initiate application with command ```bash
+6. Initiate application with command
+
+```bash
 flask run
 ```
 
